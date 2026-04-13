@@ -131,6 +131,11 @@ function selectRegion(id) {
     showInfoPanel(id);
     updateMapSeries();
     document.getElementById('placeholder-text').classList.add('hidden');
+
+    // Auto-collapse sidebar on mobile after selection for better UX
+    if (window.innerWidth <= 850) {
+        document.getElementById('sidebar').classList.add('collapsed');
+    }
 }
 
 function updateNavUI() {
