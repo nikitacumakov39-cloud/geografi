@@ -91,6 +91,17 @@ document.addEventListener('DOMContentLoaded', () => {
         updateNavUI();
         updateMapSeries();
     });
+
+    document.getElementById('sidebar-toggle').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+
+    const resizeObserver = new ResizeObserver(() => {
+        if (chartInstance) {
+            chartInstance.resize();
+        }
+    });
+    resizeObserver.observe(document.querySelector('.main-content'));
 });
 
 function initNav() {
