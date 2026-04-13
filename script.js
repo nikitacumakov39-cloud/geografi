@@ -273,11 +273,11 @@ function updateMapSeries() {
         geo: {
             map: 'world',
             roam: true, 
-            zoom: window.innerWidth <= 850 ? 1 : 1.25,
-            center: [10, 30], // initial center view
-            left: window.innerWidth <= 850 ? '2%' : '5%', 
-            right: (window.innerWidth > 850 && activeRegionId) ? '35%' : (window.innerWidth <= 850 ? '2%' : 'auto'), 
-            bottom: (window.innerWidth <= 850 && activeRegionId) ? '60%' : 'auto', // shift up on mobile when card active
+            zoom: window.innerWidth <= 850 ? 0.8 : 1.25,
+            center: window.innerWidth <= 850 ? [0, 20] : [10, 30], // shift focus
+            left: window.innerWidth <= 850 ? '0%' : '5%', 
+            right: (window.innerWidth > 850 && activeRegionId) ? '35%' : '0%', 
+            bottom: (window.innerWidth <= 850 && activeRegionId) ? '55%' : 'auto', 
             itemStyle: {
                 areaColor: baseColor,
                 borderColor: borderColor,

@@ -20,12 +20,14 @@ body {
     background: radial-gradient(circle at center, #1b202c 0%, var(--bg-color) 100%);
     color: var(--text-primary);
     height: 100vh;
+    height: 100dvh;
     overflow: hidden;
 }
 
 .app-container {
     display: flex;
     height: 100vh;
+    height: 100dvh;
     width: 100vw;
 }
 
@@ -144,6 +146,7 @@ header p {
     font-weight: 600;
     text-align: left;
     outline: none;
+    flex-shrink: 0;
 }
 
 .nav-item::before {
@@ -304,6 +307,8 @@ header p {
     gap: 15px;
     overflow-y: auto;
     padding-right: 10px;
+    flex: 1;
+    min-height: 0;
 }
 
 .details-container::-webkit-scrollbar {
@@ -432,40 +437,52 @@ header p {
         transform: translateY(0);
         width: 100%;
         height: 65vh; /* Takes up 65% of screen */
-        max-height: 65vh;
-        border-radius: 25px 25px 0 0;
-        padding: 25px 20px;
+        height: 65dvh;
+        max-height: 65dvh;
+        border-radius: 20px 20px 0 0;
+        padding: 20px 15px;
         border: none;
         border-top: 1px solid var(--glass-border);
         box-shadow: 0 -10px 30px rgba(0,0,0,0.6);
+        background: rgba(18, 22, 28, 0.95);
     }
 
-    .info-panel.hidden {
-        transform: translateY(110%);
-        opacity: 0;
+    .panel-header {
+        align-items: center;
+        margin-bottom: 10px;
     }
 
     #info-title {
-        font-size: 1.4rem;
+        font-size: 1.25rem;
     }
 
     .close-btn {
-        top: 20px;
-        right: 20px;
-        font-size: 1.8rem;
+        position: static;
+        font-size: 2rem;
+        margin-top: 0;
+        margin-right: 0;
     }
     
-    .main-desc {
-        font-size: 0.95rem;
+    .divider {
         margin-bottom: 15px;
     }
+
+    .main-desc {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
     
+    .detail-item {
+        padding: 12px;
+    }
+
     .detail-label {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .detail-value {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .placeholder {
