@@ -102,6 +102,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     resizeObserver.observe(document.querySelector('.main-content'));
+
+    // Swipe down to close info-panel on mobile
+    let touchStartY = 0;
+    const infoPanel = document.getElementById('info-panel');
+    const detailsContainer = document.getElementById('info-details');
+
+    infoPanel.addEventListener('touchstart', (e) => {
+        touchStartY = e.changedTouches[0].screenY;
+    }, {passive: true});
+
+    infoPanel.addEventListener('touchend', (e) => {
+        const touchEndY = e.changedTouches[0].screenY;
+        if (!infoPanel.classList.contains('hidden')) {
+            // Check if swiped down more than 70 pixels
+            if (touchEndY - touchStartY > 70) {
+                // Only close if we are at the top of the scrollable text (or gesture started on header)
+                if (detailsContainer.scrollTop <= 5) {
+                    document.getElementById('close-panel').click();
+                }
+            }
+        }
+    }, {passive: true});
 });
 
 function initNav() {
