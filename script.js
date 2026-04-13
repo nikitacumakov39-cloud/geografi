@@ -181,6 +181,7 @@ function initMap() {
     
     window.addEventListener('resize', () => {
         chartInstance.resize();
+        updateMapSeries();
     });
     
     // Click on map to select region
@@ -261,10 +262,11 @@ function updateMapSeries() {
         geo: {
             map: 'world',
             roam: true, 
-            zoom: 1.25,
-            center: [10, 30], // initial center view (Europe/Africa/MidEast focus)
-            left: '5%', 
-            right: activeRegionId ? '35%' : 'auto', 
+            zoom: window.innerWidth <= 850 ? 1 : 1.25,
+            center: [10, 30], // initial center view
+            left: window.innerWidth <= 850 ? '2%' : '5%', 
+            right: (window.innerWidth > 850 && activeRegionId) ? '35%' : (window.innerWidth <= 850 ? '2%' : 'auto'), 
+            bottom: (window.innerWidth <= 850 && activeRegionId) ? '60%' : 'auto', // shift up on mobile when card active
             itemStyle: {
                 areaColor: baseColor,
                 borderColor: borderColor,
